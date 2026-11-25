@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>রিজিক ফুড | ঘী, মধু, বাদাম, কিসমিস ও ড্রাই ফ্রুটস</title>
+  <meta name="description" content="রিজিক ফুড — খাঁটি গাওয়া ঘী, সুন্দরবনের মধু, বাদাম, কিসমিস, খেজুর ও ড্রাই ফ্রুটস — সারা বাংলাদেশে হোম ডেলিভারি।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+/* ==========================================================
+   style.css — রিজিক ফুড (ডেমো)
+   .NET MVC তে: wwwroot/css/site.css এ কপি করুন
+   ========================================================== */
+
+:root {
+  --green: #2f6b3a;
+  --green-dark: #1f4a28;
+  --green-soft: #e8f1e4;
+  --gold: #d99a1e;
+  --gold-soft: #fff4d6;
+  --cream: #fffaf0;
+  --ink: #222a22;
+  --muted: #6b756b;
+  --line: #e7e1d3;
+  --white: #fff;
+  --danger: #c0392b;
+  --radius: 16px;
+  --shadow: 0 8px 28px rgba(40, 60, 30, .10);
+  --shadow-sm: 0 2px 10px rgba(40, 60, 30, .08);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body {
+  margin: 0;
+  font-family: "Hind Siliguri", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body.no-scroll { overflow: hidden; }
+img { max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { line-height: 1.25; margin: 0 0 .5em; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+.container { width: min(1200px, 92%); margin-inline: auto; }
+[hidden] { display: none !important; }
+
+/* ---------- বাটন ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  padding: .75rem 1.5rem; border-radius: 999px; border: 2px solid transparent;
+  font-weight: 600; transition: .2s; white-space: nowrap;
+}
+.btn--primary { background: var(--green); color: #fff; }
+.btn--primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.btn--ghost { border-color: var(--green); color: var(--green); background: transparent; }
+.btn--ghost:hover { background: var(--green); color: #fff; }
+.btn--dark { background: var(--ink); color: #fff; }
+.btn--dark:hover { background: #000; }
+.btn--small { padding: .45rem 1rem; background: var(--green); color: #fff; font-size: .9rem; }
+.btn--block { width: 100%; }
+.link-btn { background: none; border: 0; color: var(--muted); text-decoration: underline; margin: .6rem auto 0; display: block; font-size: .9rem; }
+.link-btn:hover { color: var(--danger); }
+.icon-btn { background: var(--green-soft); border: 0; width: 38px; height: 38px; border-radius: 50%; font-size: 1rem; }
+.icon-btn:hover { background: var(--line); }
+
+.chip { display: inline-block; padding: .25rem .85rem; border-radius: 999px; font-size: .85rem; font-weight: 600; }
+.chip--light { background: var(--gold-soft); color: #8a5d00; }
+
+/* ---------- টপবার + হেডার ---------- */
+.topbar { background: var(--green-dark); color: #fff; text-align: center; font-size: .88rem; padding: .45rem 1rem; }
+.header { position: sticky; top: 0; z-index: 50; background: rgba(255, 250, 240, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); transition: box-shadow .2s; }
+.header.scrolled { box-shadow: var(--shadow-sm); }
+.header__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 72px; }
+.logo { display: flex; align-items: center; gap: .5rem; font-size: 1.5rem; font-weight: 600; }
+.logo__icon { font-size: 1.6rem; }
+.logo b { color: var(--green); }
+.logo--light { color: #fff; }
+.logo--light b { color: var(--gold); }
+
+.nav { display: flex; gap: 1.5rem; }
+.nav a { font-weight: 500; padding: .3rem 0; position: relative; }
+.nav a::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: var(--green); transition: .25s; }
+.nav a:hover::after { width: 100%; }
+
+.header__actions { display: flex; align-items: center; gap: .6rem; }
+.search { position: relative; }
+.search input { width: 200px; padding: .55rem 2.2rem .55rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: #fff; outline: none; transition: .2s; }
+.search input:focus { border-color: var(--green); width: 240px; }
+.search__icon { position: absolute; right: .8rem; top: 50%; transform: translateY(-50%); pointer-events: none; font-size: .9rem; }
+.cart-btn { position: relative; background: var(--green); color: #fff; border: 0; padding: .55rem 1rem; border-radius: 999px; font-size: 1.05rem; transition: .2s; }
+.cart-btn:hover { background: var(--green-dark); }
+.cart-btn.bump { animation: bump .4s; }
+.cart-btn__count { background: var(--gold); color: #fff; font-size: .78rem; font-weight: 700; min-width: 22px; height: 22px; border-radius: 11px; display: inline-grid; place-items: center; margin-left: .2rem; padding: 0 5px; }
+.menu-btn { display: none; background: none; border: 0; font-size: 1.6rem; }
+
+/* ---------- হিরো ---------- */
+.hero { background: linear-gradient(135deg, #fff4d6 0%, #eaf3dc 100%); overflow: hidden; }
+.hero__inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; align-items: center; min-height: 560px; padding: 3rem 0; }
+.hero h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: 1rem 0; }
+.hero h1 em { font-style: normal; color: var(--green); background: linear-gradient(transparent 62%, #ffd77a 62%); }
+.hero p { font-size: 1.1rem; color: var(--muted); max-width: 520px; }
+.hero__cta { display: flex; gap: .8rem; flex-wrap: wrap; margin: 1.6rem 0; }
+.hero__stats { display: flex; gap: 2rem; list-style: none; padding: 0; margin: 2rem 0 0; }
+.hero__stats b { display: block; font-size: 1.7rem; color: var(--green); }
+.hero__stats span { font-size: .9rem; color: var(--muted); }
+.hero__art { position: relative; height: 420px; }
+.hero__blob { position: absolute; inset: 8%; background: radial-gradient(circle at 30% 30%, #ffe08a, #f0b53a); border-radius: 62% 38% 55% 45% / 48% 55% 45% 52%; animation: morph 9s ease-in-out infinite; box-shadow: var(--shadow); }
+.float { position: absolute; font-size: 4.2rem; filter: drop-shadow(0 8px 10px rgba(0,0,0,.18)); animation: float 5s ease-in-out infinite; }
+.f1 { top: 12%; left: 38%; font-size: 6rem; }
+.f2 { top: 46%; left: 8%;  animation-delay: -1s; font-size: 5rem; }
+.f3 { top: 58%; right: 10%; animation-delay: -2s; }
+.f4 { top: 6%;  right: 8%;  animation-delay: -3s; }
+.f5 { bottom: 2%; left: 38%; animation-delay: -1.5s; }
+.f6 { top: 28%; left: 6%;  animation-delay: -2.5s; font-size: 3.2rem; }
+
+/* ---------- সেকশন ---------- */
+.section { padding: 4.5rem 0; }
+.section--alt { background: #fff; }
+.section__head { text-align: center; margin-bottom: 2.4rem; }
+.section__head h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--green-dark); }
+.section__head p { color: var(--muted); margin: 0; }
+
+/* ক্যাটাগরি কার্ড */
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+.cat-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem 1rem; text-align: center; transition: .25s; cursor: pointer; }
+.cat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--green); }
+.cat-card span { font-size: 2.6rem; display: block; }
+.cat-card h3 { font-size: 1.1rem; margin: .5rem 0 .1rem; }
+.cat-card small { color: var(--muted); }
+
+/* টুলবার */
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.filters { display: flex; gap: .5rem; flex-wrap: wrap; }
+.filter-btn { background: var(--cream); border: 1px solid var(--line); padding: .45rem 1.1rem; border-radius: 999px; font-weight: 500; transition: .2s; }
+.filter-btn:hover { border-color: var(--green); }
+.filter-btn.active { background: var(--green); color: #fff; border-color: var(--green); }
+#sortSelect { padding: .5rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--cream); }
+.result-info { color: var(--muted); font-size: .92rem; margin: 0 0 1.2rem; }
+
+/* প্রোডাক্ট কার্ড */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.4rem; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: .25s; animation: fadeUp .5s both; }
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.card__img { position: relative; height: 190px; display: grid; place-items: center; font-size: 5.4rem; cursor: pointer; }
+.card__img span { transition: transform .3s; filter: drop-shadow(0 6px 8px rgba(0,0,0,.15)); }
+.card:hover .card__img span { transform: scale(1.12) rotate(-4deg); }
+.badge { position: absolute; top: 12px; left: 12px; background: var(--green); color: #fff; font-size: .75rem; font-weight: 600; padding: .15rem .7rem; border-radius: 999px; }
+.discount { position: absolute; top: 12px; right: 12px; background: var(--danger); color: #fff; font-size: .75rem; font-weight: 700; padding: .15rem .6rem; border-radius: 999px; }
+.card__body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+.card__cat { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.card__title { font-size: 1.12rem; margin: 0; cursor: pointer; }
+.card__title:hover { color: var(--green); }
+.rating { font-size: .85rem; color: var(--gold); }
+.rating small { color: var(--muted); margin-left: .2rem; }
+.price { display: flex; align-items: baseline; gap: .5rem; }
+.price b { font-size: 1.35rem; color: var(--green); }
+.price s { color: var(--muted); font-size: .9rem; }
+.card__row { display: flex; gap: .5rem; margin-top: auto; }
+.weight-select { flex: 1; padding: .5rem .6rem; border: 1px solid var(--line); border-radius: 10px; background: var(--cream); min-width: 0; }
+.add-btn { flex: 1.2; background: var(--green); color: #fff; border: 0; border-radius: 10px; font-weight: 600; padding: .5rem .8rem; transition: .2s; }
+.add-btn:hover { background: var(--green-dark); }
+.add-btn:active { transform: scale(.96); }
+
+.empty { text-align: center; padding: 3rem 0; color: var(--muted); }
+.empty span { font-size: 3rem; }
+
+/* ফিচার */
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.2rem; }
+.feature { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.8rem 1.4rem; text-align: center; transition: .25s; }
+.feature:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.feature span { font-size: 2.6rem; display: block; margin-bottom: .4rem; }
+.feature p { color: var(--muted); margin: 0; }
+
+/* রিভিউ */
+.reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+.review { background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+.review p { margin: .5rem 0 1rem; }
+.review__who { display: flex; align-items: center; gap: .7rem; }
+.avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-weight: 700; }
+.review__who small { display: block; color: var(--muted); }
+
+/* নিউজলেটার */
+.newsletter { background: var(--green); color: #fff; padding: 2.8rem 0; }
+.newsletter__inner { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.newsletter h2 { margin-bottom: .2rem; }
+.newsletter p { margin: 0; opacity: .85; }
+.newsletter__form { display: flex; gap: .5rem; flex-wrap: wrap; }
+.newsletter__form input { padding: .75rem 1.2rem; border-radius: 999px; border: 0; min-width: 240px; color: var(--ink); outline: none; }
+
+/* ফুটার */
+.footer { background: #172a1b; color: #cfd8cf; padding-top: 3rem; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr 1.2fr; gap: 2rem; }
+.footer h4 { color: #fff; }
+.footer a:not(.logo) { display: block; margin-bottom: .35rem; opacity: .85; }
+.footer a:not(.logo):hover { opacity: 1; color: var(--gold); }
+.footer p { margin: 0 0 .4rem; }
+.footer__bottom { text-align: center; padding: 1.2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,.1); font-size: .88rem; opacity: .75; }
+
+/* ---------- ওভারলে + ড্রয়ার ---------- */
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); opacity: 0; visibility: hidden; transition: .3s; z-index: 90; }
+.overlay.show { opacity: 1; visibility: visible; }
+.drawer { position: fixed; top: 0; right: 0; height: 100%; width: min(420px, 100%); background: #fff; z-index: 100; transform: translateX(100%); transition: transform .35s ease; display: flex; flex-direction: column; box-shadow: -10px 0 40px rgba(0,0,0,.15); }
+.drawer.open { transform: none; }
+.drawer__head { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); }
+.drawer__head h3 { margin: 0; }
+.drawer__body { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; }
+.drawer__foot { border-top: 1px solid var(--line); padding: 1rem 1.2rem 1.2rem; background: var(--cream); }
+.cart-empty { text-align: center; color: var(--muted); padding: 3rem 0; }
+.cart-empty span { font-size: 3.4rem; display: block; }
+
+.cart-item { display: grid; grid-template-columns: 64px 1fr auto; gap: .8rem; padding: .8rem 0; border-bottom: 1px dashed var(--line); align-items: center; }
+.cart-item__img { width: 64px; height: 64px; border-radius: 12px; display: grid; place-items: center; font-size: 2rem; }
+.cart-item h4 { font-size: .98rem; margin: 0; }
+.cart-item small { color: var(--muted); display: block; }
+.qty { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; margin-top: .3rem; overflow: hidden; }
+.qty button { width: 28px; height: 28px; background: var(--cream); border: 0; font-size: 1rem; }
+.qty button:hover { background: var(--green-soft); }
+.qty span { min-width: 30px; text-align: center; font-weight: 600; }
+.cart-item__right { text-align: right; }
+.cart-item__right b { color: var(--green); }
+.remove-btn { background: none; border: 0; color: var(--danger); font-size: .82rem; display: block; margin-top: .3rem; margin-left: auto; }
+
+.free-ship p { margin: 0 0 .3rem; font-size: .88rem; }
+.progress { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+.progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--green)); transition: width .4s; }
+.coupon { display: flex; gap: .5rem; margin: .8rem 0; }
+.coupon input { flex: 1; padding: .45rem .9rem; border: 1px solid var(--line); border-radius: 999px; min-width: 0; }
+.totals { margin: 0 0 .8rem; }
+.totals div { display: flex; justify-content: space-between; padding: .2rem 0; }
+.totals dt, .totals dd { margin: 0; }
+.totals__grand { font-size: 1.2rem; font-weight: 700; border-top: 1px solid var(--line); margin-top: .3rem; padding-top: .5rem !important; color: var(--green-dark); }
+
+/* ---------- মডাল ---------- */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: grid; place-items: center; padding: 1rem; opacity: 0; visibility: hidden; transition: .25s; z-index: 110; overflow-y: auto; }
+.modal.show { opacity: 1; visibility: visible; }
+.modal__box { background: #fff; border-radius: 20px; padding: 1.8rem; width: min(520px, 100%); position: relative; transform: translateY(20px); transition: .25s; max-height: 94vh; overflow-y: auto; }
+.modal.show .modal__box { transform: none; }
+.modal__box--wide { width: min(760px, 100%); }
+.modal__close { position: absolute; top: 12px; right: 12px; }
+.modal h3 { padding-right: 2rem; }
+#checkoutForm label { display: block; font-weight: 500; margin-bottom: .8rem; font-size: .95rem; }
+#checkoutForm input, #checkoutForm textarea, #checkoutForm select { display: block; width: 100%; margin-top: .25rem; padding: .65rem .9rem; border: 1px solid var(--line); border-radius: 10px; background: var(--cream); outline: none; }
+#checkoutForm input:focus, #checkoutForm textarea:focus, #checkoutForm select:focus { border-color: var(--green); background: #fff; }
+#checkoutForm .invalid { border-color: var(--danger); }
+.summary-box { background: var(--green-soft); border-radius: 12px; padding: .8rem 1rem; margin: .5rem 0 1rem; font-size: .93rem; }
+.summary-box div { display: flex; justify-content: space-between; padding: .1rem 0; }
+.summary-box .grand { font-weight: 700; border-top: 1px solid #c9dcc3; margin-top: .3rem; padding-top: .4rem; }
+.form-error { color: var(--danger); font-size: .9rem; margin: 0 0 .6rem; }
+.success { text-align: center; padding: 1rem 0; }
+.success__icon { font-size: 4rem; }
+
+/* কুইক ভিউ */
+.quick { display: grid; grid-template-columns: 1fr 1.1fr; gap: 1.5rem; align-items: center; }
+.quick__img { height: 280px; border-radius: 16px; display: grid; place-items: center; font-size: 8rem; }
+.quick h3 { font-size: 1.5rem; padding-right: 2rem; }
+.quick p { color: var(--muted); }
+.quick__row { display: flex; gap: .6rem; margin-top: 1rem; align-items: center; flex-wrap: wrap; }
+
+/* টোস্ট + টপ */
+.toast-wrap { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; flex-direction: column; gap: .5rem; align-items: center; pointer-events: none; }
+.toast { background: var(--ink); color: #fff; padding: .7rem 1.3rem; border-radius: 999px; box-shadow: var(--shadow); animation: toastIn .3s, toastOut .3s 2.2s forwards; font-size: .95rem; }
+.toast.ok { background: var(--green); }
+.toast.warn { background: var(--danger); }
+.to-top { position: fixed; right: 20px; bottom: 24px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--gold); color: #fff; font-size: 1.3rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; transition: .25s; z-index: 40; }
+.to-top.show { opacity: 1; visibility: visible; }
+
+/* ---------- অ্যানিমেশন ---------- */
+@keyframes float { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-16px) rotate(4deg); } }
+@keyframes morph { 0%,100% { border-radius: 62% 38% 55% 45% / 48% 55% 45% 52%; } 50% { border-radius: 40% 60% 42% 58% / 58% 42% 58% 42%; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes bump { 0%,100% { transform: scale(1); } 40% { transform: scale(1.18); } }
+@keyframes toastIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes toastOut { to { opacity: 0; transform: translateY(8px); } }
+
+/* ---------- রেসপনসিভ ---------- */
+@media (max-width: 920px) {
+  .hero__inner { grid-template-columns: 1fr; text-align: center; min-height: auto; }
+  .hero p { margin-inline: auto; }
+  .hero__cta, .hero__stats { justify-content: center; }
+  .hero__art { height: 300px; order: -1; }
+  .float { font-size: 3rem; } .f1 { font-size: 4.2rem; } .f2 { font-size: 3.6rem; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .menu-btn { display: block; }
+  .nav { position: absolute; top: 72px; left: 0; right: 0; background: var(--cream); flex-direction: column; gap: 0; padding: .5rem 4%; border-bottom: 1px solid var(--line); max-height: 0; overflow: hidden; opacity: 0; transition: .3s; }
+  .nav.open { max-height: 360px; opacity: 1; }
+  .nav a { padding: .8rem 0; border-bottom: 1px solid var(--line); }
+  .search input, .search input:focus { width: 150px; }
+}
+@media (max-width: 600px) {
+  .topbar { font-size: .78rem; }
+  .search { display: none; }
+  .quick { grid-template-columns: 1fr; }
+  .quick__img { height: 190px; font-size: 5.5rem; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+  .card__img { height: 130px; font-size: 3.6rem; }
+  .card__row { flex-direction: column; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .section { padding: 3rem 0; }
+}
+@media (max-width: 380px) { .product-grid { grid-template-columns: 1fr; } }
+
+  </style>
+</head>
+<body>
+
+  <!-- ============ টপ বার ============ -->
+  <div class="topbar">
+    🚚 ১৫০০ ৳ এর বেশি অর্ডারে ফ্রি ডেলিভারি &nbsp;|&nbsp; 📞 হটলাইন: ০১৭০০-০০০০০০
+  </div>
+
+  <!-- ============ হেডার ============ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#home" class="logo">
+        <span class="logo__icon">🌿</span>
+        <span class="logo__text">রিজিক <b>ফুড</b></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#home">হোম</a>
+        <a href="#categories">ক্যাটাগরি</a>
+        <a href="#products">পণ্য</a>
+        <a href="#why">কেন আমরা</a>
+        <a href="#reviews">রিভিউ</a>
+        <a href="#contact">যোগাযোগ</a>
+      </nav>
+
+      <div class="header__actions">
+        <div class="search">
+          <input type="search" id="searchInput" placeholder="পণ্য খুঁজুন..." aria-label="পণ্য খুঁজুন">
+          <span class="search__icon">🔍</span>
+        </div>
+        <button class="cart-btn" id="cartBtn" aria-label="কার্ট খুলুন">
+          🛒 <span class="cart-btn__count" id="cartCount">0</span>
+        </button>
+        <button class="menu-btn" id="menuBtn" aria-label="মেনু">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ হিরো ============ -->
+    <section class="hero" id="home">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--light">১০০% প্রাকৃতিক • ভেজালমুক্ত</span>
+          <h1>প্রকৃতির <em>খাঁটি স্বাদ</em><br>এখন আপনার দোরগোড়ায়</h1>
+          <p>গাওয়া ঘী, সুন্দরবনের মধু, প্রিমিয়াম বাদাম, কিসমিস, খেজুর ও ড্রাই ফ্রুটস — সরাসরি উৎস থেকে সংগ্রহ করা, মান নিয়ে কোনো আপস নয়।</p>
+          <div class="hero__cta">
+            <a href="#products" class="btn btn--primary">এখনই কিনুন</a>
+            <a href="#why" class="btn btn--ghost">আমাদের সম্পর্কে</a>
+          </div>
+          <ul class="hero__stats">
+            <li><b>৫০০০+</b><span>সন্তুষ্ট গ্রাহক</span></li>
+            <li><b>২২+</b><span>প্রিমিয়াম পণ্য</span></li>
+            <li><b>৬৪</b><span>জেলায় ডেলিভারি</span></li>
+          </ul>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <div class="hero__blob"></div>
+          <span class="float f1">🍯</span>
+          <span class="float f2">🧈</span>
+          <span class="float f3">🌰</span>
+          <span class="float f4">🍇</span>
+          <span class="float f5">🌴</span>
+          <span class="float f6">🥜</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ক্যাটাগরি ============ -->
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section__head">
+          <h2>ক্যাটাগরি অনুযায়ী কিনুন</h2>
+          <p>আপনার পছন্দের পণ্যটি খুঁজে নিন</p>
+        </div>
+        <div class="cat-grid" id="catGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ প্রোডাক্ট ============ -->
+    <section class="section section--alt" id="products">
+      <div class="container">
+        <div class="section__head">
+          <h2>আমাদের পণ্যসমূহ</h2>
+          <p>ওজন বেছে নিয়ে সরাসরি কার্টে যোগ করুন</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="filters" id="filters"></div>
+          <select id="sortSelect" aria-label="সাজান">
+            <option value="default">ডিফল্ট</option>
+            <option value="priceAsc">দাম: কম থেকে বেশি</option>
+            <option value="priceDesc">দাম: বেশি থেকে কম</option>
+            <option value="rating">রেটিং অনুযায়ী</option>
+            <option value="name">নাম অনুযায়ী</option>
+          </select>
+        </div>
+
+        <p class="result-info" id="resultInfo"></p>
+        <div class="product-grid" id="productGrid"></div>
+        <div class="empty" id="emptyState" hidden>
+          <span>😕</span>
+          <p>দুঃখিত, কোনো পণ্য পাওয়া যায়নি।</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ কেন আমরা ============ -->
+    <section class="section" id="why">
+      <div class="container">
+        <div class="section__head">
+          <h2>কেন "রিজিক ফুড"?</h2>
+          <p>বিশ্বাস ও মানই আমাদের পরিচয়</p>
+        </div>
+        <div class="features">
+          <article class="feature"><span>🌱</span><h3>১০০% খাঁটি</h3><p>কোনো ভেজাল বা কৃত্রিম রঙ-ফ্লেভার নেই। ল্যাব টেস্টেড মান।</p></article>
+          <article class="feature"><span>🚚</span><h3>দ্রুত ডেলিভারি</h3><p>ঢাকায় ২৪ ঘণ্টায় এবং সারা দেশে ২–৩ দিনে পৌঁছে দিই।</p></article>
+          <article class="feature"><span>💳</span><h3>ক্যাশ অন ডেলিভারি</h3><p>পণ্য হাতে পেয়ে টাকা দিন। বিকাশ ও নগদও চলবে।</p></article>
+          <article class="feature"><span>↩️</span><h3>সহজ রিটার্ন</h3><p>পণ্যে সমস্যা হলে ৭ দিনের মধ্যে ফেরত বা বদলে নিন।</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ রিভিউ ============ -->
+    <section class="section section--alt" id="reviews">
+      <div class="container">
+        <div class="section__head">
+          <h2>গ্রাহকরা কী বলছেন</h2>
+          <p>আমাদের সন্তুষ্ট ক্রেতাদের কিছু মতামত</p>
+        </div>
+        <div class="reviews" id="reviewGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ নিউজলেটার ============ -->
+    <section class="newsletter">
+      <div class="container newsletter__inner">
+        <div>
+          <h2>বিশেষ অফার সবার আগে পেতে চান?</h2>
+          <p>ইমেইল দিন, প্রথম অর্ডারে ১০% ছাড় কুপন পাবেন।</p>
+        </div>
+        <form id="newsletterForm" class="newsletter__form">
+          <input type="email" id="newsletterEmail" placeholder="আপনার ইমেইল" required>
+          <button class="btn btn--dark" type="submit">সাবস্ক্রাইব</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ ফুটার ============ -->
+  <footer class="footer" id="contact">
+    <div class="container footer__grid">
+      <div>
+        <a href="#home" class="logo logo--light"><span class="logo__icon">🌿</span><span class="logo__text">রিজিক <b>ফুড</b></span></a>
+        <p>প্রাকৃতিক ও খাঁটি খাদ্যপণ্যের বিশ্বস্ত ঠিকানা।</p>
+      </div>
+      <div>
+        <h4>দ্রুত লিংক</h4>
+        <a href="#products">পণ্যসমূহ</a>
+        <a href="#why">কেন আমরা</a>
+        <a href="#reviews">রিভিউ</a>
+      </div>
+      <div>
+        <h4>যোগাযোগ</h4>
+        <p>📍 ধানমন্ডি, ঢাকা-১২০৫</p>
+        <p>📞 ০১৭০০-০০০০০০</p>
+        <p>✉️ info@rizikfood.demo</p>
+      </div>
+      <div>
+        <h4>পেমেন্ট</h4>
+        <p>ক্যাশ অন ডেলিভারি • বিকাশ • নগদ • কার্ড</p>
+      </div>
+    </div>
+    <div class="footer__bottom">© 2026 রিজিক ফুড — এটি একটি ডেমো ওয়েবসাইট।</div>
+  </footer>
+
+  <!-- ============ কার্ট ড্রয়ার ============ -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="শপিং কার্ট" aria-hidden="true">
+    <div class="drawer__head">
+      <h3>🛒 আপনার কার্ট</h3>
+      <button class="icon-btn" id="closeCart" aria-label="বন্ধ করুন">✕</button>
+    </div>
+
+    <div class="drawer__body" id="cartItems"></div>
+
+    <div class="drawer__foot" id="cartFoot">
+      <div class="free-ship">
+        <p id="freeShipText"></p>
+        <div class="progress"><span id="freeShipBar"></span></div>
+      </div>
+      <div class="coupon">
+        <input type="text" id="couponInput" placeholder="কুপন কোড (DEMO10)">
+        <button class="btn btn--small" id="applyCoupon">প্রয়োগ</button>
+      </div>
+      <dl class="totals">
+        <div><dt>সাবটোটাল</dt><dd id="subTotal">৳০</dd></div>
+        <div id="discountRow" hidden><dt>ছাড়</dt><dd id="discountAmt">-৳০</dd></div>
+        <div><dt>ডেলিভারি চার্জ</dt><dd id="shipAmt">৳০</dd></div>
+        <div class="totals__grand"><dt>সর্বমোট</dt><dd id="grandTotal">৳০</dd></div>
+      </dl>
+      <button class="btn btn--primary btn--block" id="checkoutBtn">চেকআউট করুন</button>
+      <button class="link-btn" id="clearCart">কার্ট খালি করুন</button>
+    </div>
+  </aside>
+
+  <!-- ============ চেকআউট মডাল ============ -->
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal__box">
+      <button class="icon-btn modal__close" data-close-modal aria-label="বন্ধ করুন">✕</button>
+      <div id="checkoutView">
+        <h3>অর্ডার কনফার্ম করুন</h3>
+        <form id="checkoutForm" novalidate>
+          <label>পুরো নাম
+            <input type="text" name="name" required placeholder="যেমন: রহিম উদ্দিন">
+          </label>
+          <label>মোবাইল নম্বর
+            <input type="tel" name="phone" required placeholder="01XXXXXXXXX" pattern="01[3-9][0-9]{8}">
+          </label>
+          <label>পুরো ঠিকানা
+            <textarea name="address" rows="3" required placeholder="বাসা/রোড, এলাকা, জেলা"></textarea>
+          </label>
+          <label>পেমেন্ট পদ্ধতি
+            <select name="payment">
+              <option value="cod">ক্যাশ অন ডেলিভারি</option>
+              <option value="bkash">বিকাশ</option>
+              <option value="nagad">নগদ</option>
+            </select>
+          </label>
+          <div class="summary-box" id="orderSummary"></div>
+          <p class="form-error" id="formError" hidden></p>
+          <button type="submit" class="btn btn--primary btn--block">অর্ডার করুন</button>
+        </form>
+      </div>
+      <div id="successView" hidden class="success">
+        <div class="success__icon">✅</div>
+        <h3>ধন্যবাদ! আপনার অর্ডার গৃহীত হয়েছে</h3>
+        <p>অর্ডার নম্বর: <b id="orderNo"></b></p>
+        <p>আমরা শীঘ্রই আপনাকে ফোন করে কনফার্ম করব।</p>
+        <button class="btn btn--primary" data-close-modal>শপিং চালিয়ে যান</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ প্রোডাক্ট কুইক ভিউ মডাল ============ -->
+  <div class="modal" id="quickModal" aria-hidden="true">
+    <div class="modal__box modal__box--wide" id="quickBody"></div>
+  </div>
+
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+  <button class="to-top" id="toTop" aria-label="উপরে যান">↑</button>
+
+  <script>
+/* ==========================================================
+   products.js  — ডেমো প্রোডাক্ট ডেটা
+   .NET MVC তে কনভার্ট করার সময় এই অ্যারেটি Model/Database
+   (Product, Category) থেকে আসবে এবং JSON হিসেবে View-তে যাবে।
+   price = প্রতি ১ কেজির দাম (৳)। variants = ওজন অনুযায়ী গুণক।
+   ========================================================== */
+
+const CATEGORIES = [
+  { id: "all",    name: "সব পণ্য" },
+  { id: "ghee",   name: "ঘী" },
+  { id: "honey",  name: "মধু" },
+  { id: "nuts",   name: "বাদাম" },
+  { id: "raisin", name: "কিসমিস" },
+  { id: "dry",    name: "ড্রাই ফ্রুটস" },
+  { id: "dates",  name: "খেজুর" }
+];
+
+/* ওজন অপশন: label, কেজির অনুপাত (factor) */
+const WEIGHTS = {
+  kg: [
+    { label: "২৫০ গ্রাম", factor: 0.25 },
+    { label: "৫০০ গ্রাম", factor: 0.5 },
+    { label: "১ কেজি",    factor: 1 }
+  ],
+  liquid: [
+    { label: "২৫০ গ্রাম", factor: 0.25 },
+    { label: "৫০০ গ্রাম", factor: 0.5 },
+    { label: "১ কেজি",    factor: 1 },
+    { label: "২ কেজি",    factor: 2 }
+  ]
+};
+
+const PRODUCTS = [
+  /* ---------- ঘী ---------- */
+  { id: 1,  name: "খাঁটি গাওয়া ঘী",       en: "Pure Gawa Ghee",       cat: "ghee",   price: 1450, oldPrice: 1650, emoji: "🧈", bg: "#fff3c4", weights: "liquid", badge: "বেস্টসেলার", rating: 4.9, reviews: 312, desc: "গরুর দুধের সর থেকে তৈরি ঐতিহ্যবাহী গাওয়া ঘী। রান্না ও পরোটায় দারুণ ঘ্রাণ।" },
+  { id: 2,  name: "দেশি গরুর ঘী",          en: "Desi Cow Ghee",        cat: "ghee",   price: 1750, oldPrice: null, emoji: "🧈", bg: "#ffe9a8", weights: "liquid", badge: "অর্গানিক", rating: 4.8, reviews: 189, desc: "দেশি গরুর দুধ থেকে ধীরে জ্বালানো ঘী, প্রিজারভেটিভ ছাড়া।" },
+  { id: 3,  name: "মহিষের ঘী",             en: "Buffalo Ghee",         cat: "ghee",   price: 1350, oldPrice: 1500, emoji: "🫙", bg: "#fff0b8", weights: "liquid", badge: "অফার", rating: 4.6, reviews: 97, desc: "ঘন ও স্বাদে ভরপুর মহিষের দুধের ঘী।" },
+
+  /* ---------- মধু ---------- */
+  { id: 4,  name: "সুন্দরবনের খলিশা মধু",  en: "Sundarban Khalisha Honey", cat: "honey", price: 900,  oldPrice: 1050, emoji: "🍯", bg: "#ffd98a", weights: "liquid", badge: "সুন্দরবন", rating: 4.9, reviews: 441, desc: "খলিশা ফুলের নির্যাসে তৈরি প্রাকৃতিক মধু, হালকা টক-মিষ্টি স্বাদ।" },
+  { id: 5,  name: "সরিষা ফুলের মধু",       en: "Mustard Flower Honey", cat: "honey",  price: 650,  oldPrice: null, emoji: "🍯", bg: "#ffe39a", weights: "liquid", badge: null, rating: 4.7, reviews: 268, desc: "সরিষা মৌসুমের ঘন, ক্রিমি মধু। শীতে সবচেয়ে জনপ্রিয়।" },
+  { id: 6,  name: "লিচু ফুলের মধু",        en: "Litchi Flower Honey",  cat: "honey",  price: 750,  oldPrice: 820, emoji: "🍯", bg: "#ffdb9e", weights: "liquid", badge: "নতুন", rating: 4.8, reviews: 120, desc: "লিচু বাগান থেকে সংগ্রহ করা সুগন্ধি মধু।" },
+  { id: 7,  name: "কালিজিরা ফুলের মধু",    en: "Black Seed Honey",     cat: "honey",  price: 1100, oldPrice: null, emoji: "🍯", bg: "#f5c26b", weights: "liquid", badge: "প্রিমিয়াম", rating: 4.9, reviews: 203, desc: "গাঢ় রঙ ও ঝাঁঝালো স্বাদের কালিজিরা মধু, স্বাস্থ্যসচেতনদের প্রিয়।" },
+
+  /* ---------- বাদাম ---------- */
+  { id: 8,  name: "কাঠবাদাম",              en: "Almonds",              cat: "nuts",   price: 1600, oldPrice: 1800, emoji: "🌰", bg: "#f3dfc1", weights: "kg", badge: "বেস্টসেলার", rating: 4.8, reviews: 356, desc: "আমেরিকান ক্যালিফোর্নিয়া কাঠবাদাম, মচমচে ও সতেজ।" },
+  { id: 9,  name: "কাজুবাদাম (গোটা)",      en: "Cashew Nuts",          cat: "nuts",   price: 1900, oldPrice: null, emoji: "🥜", bg: "#f6e6c8", weights: "kg", badge: null, rating: 4.7, reviews: 244, desc: "ভিয়েতনামি W320 গ্রেডের বড় সাইজের কাজুবাদাম।" },
+  { id: 10, name: "পেস্তা বাদাম",          en: "Pistachios",           cat: "nuts",   price: 2600, oldPrice: 2850, emoji: "🥜", bg: "#dfeccb", weights: "kg", badge: "প্রিমিয়াম", rating: 4.8, reviews: 131, desc: "খোসা ছাড়ানো, হালকা লবণাক্ত ইরানি পেস্তা।" },
+  { id: 11, name: "আখরোট",                 en: "Walnuts",              cat: "nuts",   price: 1750, oldPrice: null, emoji: "🌰", bg: "#ead5b5", weights: "kg", badge: null, rating: 4.6, reviews: 88, desc: "ওমেগা-৩ সমৃদ্ধ খোসা ছাড়ানো চিলিয়ান আখরোট।" },
+  { id: 12, name: "চিনাবাদাম (রোস্টেড)",   en: "Roasted Peanuts",      cat: "nuts",   price: 280,  oldPrice: null, emoji: "🥜", bg: "#f1dcb9", weights: "kg", badge: "সাশ্রয়ী", rating: 4.5, reviews: 402, desc: "হালকা লবণ দেওয়া ভাজা চিনাবাদাম, আড্ডার সঙ্গী।" },
+
+  /* ---------- কিসমিস ---------- */
+  { id: 13, name: "সবুজ কিসমিস",           en: "Green Raisins",        cat: "raisin", price: 850,  oldPrice: 950, emoji: "🍇", bg: "#e4efc0", weights: "kg", badge: "অফার", rating: 4.7, reviews: 175, desc: "বীজহীন আফগান সবুজ কিসমিস, রসালো ও মিষ্টি।" },
+  { id: 14, name: "কালো কিসমিস",           en: "Black Raisins",        cat: "raisin", price: 780,  oldPrice: null, emoji: "🍇", bg: "#d9cce6", weights: "kg", badge: null, rating: 4.6, reviews: 143, desc: "পায়েস ও পোলাওয়ের জন্য আদর্শ কালো কিসমিস।" },
+  { id: 15, name: "গোল্ডেন কিসমিস",        en: "Golden Raisins",       cat: "raisin", price: 900,  oldPrice: null, emoji: "🍇", bg: "#fbe8a0", weights: "kg", badge: "নতুন", rating: 4.8, reviews: 76, desc: "সোনালি রঙের নরম কিসমিস, কেক ও ডেজার্টে দারুণ।" },
+
+  /* ---------- ড্রাই ফ্রুটস ---------- */
+  { id: 16, name: "শুকনো এপ্রিকট",         en: "Dried Apricots",       cat: "dry",    price: 1200, oldPrice: 1350, emoji: "🍑", bg: "#ffd3a8", weights: "kg", badge: null, rating: 4.7, reviews: 109, desc: "তুর্কি এপ্রিকট, আয়রন ও ফাইবারে ভরপুর।" },
+  { id: 17, name: "শুকনো ডুমুর",           en: "Dried Figs",           cat: "dry",    price: 1500, oldPrice: null, emoji: "🫐", bg: "#e5cfe0", weights: "kg", badge: "স্বাস্থ্যকর", rating: 4.6, reviews: 84, desc: "প্রাকৃতিক মিষ্টি, নরম ও চিউই আফগান ডুমুর।" },
+  { id: 18, name: "মিক্সড ড্রাই ফ্রুট",    en: "Mixed Dry Fruits",     cat: "dry",    price: 1650, oldPrice: 1850, emoji: "🥗", bg: "#f9e0c0", weights: "kg", badge: "কম্বো", rating: 4.9, reviews: 267, desc: "কাঠবাদাম, কাজু, কিসমিস, আখরোট ও এপ্রিকটের মিশ্রণ।" },
+  { id: 19, name: "শুকনো আলুবোখারা",       en: "Dried Prunes",         cat: "dry",    price: 950,  oldPrice: null, emoji: "🫐", bg: "#d6c3d9", weights: "kg", badge: null, rating: 4.5, reviews: 59, desc: "টক-মিষ্টি স্বাদের বীজহীন আলুবোখারা।" },
+
+  /* ---------- খেজুর ---------- */
+  { id: 20, name: "আজওয়া খেজুর",          en: "Ajwa Dates",           cat: "dates",  price: 2800, oldPrice: 3100, emoji: "🌴", bg: "#e7d2bd", weights: "kg", badge: "মদিনা", rating: 4.9, reviews: 521, desc: "মদিনার বিখ্যাত আজওয়া খেজুর, নরম ও মধুর স্বাদ।" },
+  { id: 21, name: "মেডজুল খেজুর",          en: "Medjool Dates",        cat: "dates",  price: 1800, oldPrice: null, emoji: "🌴", bg: "#edd7bd", weights: "kg", badge: "জাম্বো", rating: 4.8, reviews: 298, desc: "বড় সাইজের ক্যারামেলের মতো মিষ্টি মেডজুল খেজুর।" },
+  { id: 22, name: "সুকারি খেজুর",          en: "Sukkari Dates",        cat: "dates",  price: 1300, oldPrice: 1450, emoji: "🌴", bg: "#f3dfb6", weights: "kg", badge: "অফার", rating: 4.7, reviews: 214, desc: "সৌদি আরবের সোনালি, কচকচে ও মিষ্টি সুকারি।" }
+];
+
+  </script>
+  <script>
+/* ==========================================================
+   app.js — রিজিক ফুড (ডেমো)
+   Vanilla JS। .NET MVC তে কনভার্ট করার নোট:
+   - PRODUCTS / CATEGORIES  -> Controller থেকে JSON (বা Razor foreach)
+   - Cart                   -> Session / Database (CartController API)
+   - placeOrder()           -> POST /Order/Create
+   ========================================================== */
+
+(function () {
+  "use strict";
+
+  /* ---------- কনফিগ ---------- */
+  const CONFIG = {
+    currency: "৳",
+    freeShipOver: 1500,
+    shipFee: 80,
+    storageKey: "rizik_food_cart_v1",
+    coupons: { DEMO10: 10, WELCOME10: 10, EID15: 15 } // শতাংশ ছাড়
+  };
+
+  /* ---------- স্টেট ---------- */
+  const state = {
+    category: "all",
+    search: "",
+    sort: "default",
+    cart: loadCart(),     // [{key, id, weightLabel, factor, qty}]
+    coupon: null          // {code, percent}
+  };
+
+  /* ---------- হেল্পার ---------- */
+  const $  = (s, root = document) => root.querySelector(s);
+  const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+  const BN = ["০","১","২","৩","৪","৫","৬","৭","৮","৯"];
+  const bn = (n) => String(n).replace(/\d/g, (d) => BN[d]);
+  const money = (n) => CONFIG.currency + bn(Math.round(n).toLocaleString("en-US"));
+  const catName = (id) => (CATEGORIES.find((c) => c.id === id) || {}).name || "";
+  const getProduct = (id) => PRODUCTS.find((p) => p.id === id);
+  const unitPrice = (p, factor) => Math.round(p.price * factor);
+  const stars = (r) => "★".repeat(Math.round(r)) + "☆".repeat(5 - Math.round(r));
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  function loadCart() {
+    try { return JSON.parse(localStorage.getItem(CONFIG.storageKey)) || []; }
+    catch (e) { return []; }
+  }
+  function saveCart() {
+    try { localStorage.setItem(CONFIG.storageKey, JSON.stringify(state.cart)); } catch (e) { /* ignore */ }
+  }
+
+  /* ---------- টোস্ট ---------- */
+  function toast(msg, type = "ok") {
+    const el = document.createElement("div");
+    el.className = "toast " + type;
+    el.textContent = msg;
+    $("#toastWrap").appendChild(el);
+    setTimeout(() => el.remove(), 2600);
+  }
+
+  /* ==========================================================
+     ক্যাটাগরি ও ফিল্টার
+     ========================================================== */
+  function renderCategories() {
+    const icons = { ghee: "🧈", honey: "🍯", nuts: "🌰", raisin: "🍇", dry: "🍑", dates: "🌴" };
+    $("#catGrid").innerHTML = CATEGORIES.filter((c) => c.id !== "all").map((c) => {
+      const count = PRODUCTS.filter((p) => p.cat === c.id).length;
+      return `<div class="cat-card" data-cat="${c.id}" tabindex="0" role="button">
+        <span>${icons[c.id]}</span><h3>${c.name}</h3><small>${bn(count)}টি পণ্য</small></div>`;
+    }).join("");
+  }
+
+  function renderFilters() {
+    $("#filters").innerHTML = CATEGORIES.map((c) =>
+      `<button class="filter-btn ${c.id === state.category ? "active" : ""}" data-cat="${c.id}">${c.name}</button>`
+    ).join("");
+  }
+
+  /* ==========================================================
+     প্রোডাক্ট গ্রিড
+     ========================================================== */
+  function getVisibleProducts() {
+    let list = PRODUCTS.filter((p) => state.category === "all" || p.cat === state.category);
+    const q = state.search.trim().toLowerCase();
+    if (q) list = list.filter((p) => (p.name + " " + p.en + " " + catName(p.cat)).toLowerCase().includes(q));
+
+    const sorters = {
+      priceAsc:  (a, b) => a.price - b.price,
+      priceDesc: (a, b) => b.price - a.price,
+      rating:    (a, b) => b.rating - a.rating,
+      name:      (a, b) => a.name.localeCompare(b.name, "bn")
+    };
+    if (sorters[state.sort]) list = [...list].sort(sorters[state.sort]);
+    return list;
+  }
+
+  function weightOptions(p) {
+    return WEIGHTS[p.weights].map((w, i) =>
+      `<option value="${i}">${w.label} — ${money(unitPrice(p, w.factor))}</option>`).join("");
+  }
+
+  function productCard(p, i) {
+    const off = p.oldPrice ? Math.round((1 - p.price / p.oldPrice) * 100) : 0;
+    return `
+      <article class="card" data-id="${p.id}" style="animation-delay:${Math.min(i, 12) * 40}ms">
+        <div class="card__img" style="background:${p.bg}" data-quick="${p.id}">
+          ${p.badge ? `<span class="badge">${esc(p.badge)}</span>` : ""}
+          ${off ? `<span class="discount">-${bn(off)}%</span>` : ""}
+          <span>${p.emoji}</span>
+        </div>
+        <div class="card__body">
+          <div class="card__cat">${catName(p.cat)}</div>
+          <h3 class="card__title" data-quick="${p.id}">${esc(p.name)}</h3>
+          <div class="rating">${stars(p.rating)} <small>${bn(p.rating)} (${bn(p.reviews)})</small></div>
+          <div class="price"><b>${money(p.price)}</b>${p.oldPrice ? `<s>${money(p.oldPrice)}</s>` : ""}<small>/কেজি</small></div>
+          <div class="card__row">
+            <select class="weight-select" aria-label="ওজন">${weightOptions(p)}</select>
+            <button class="add-btn" data-add="${p.id}">🛒 কার্টে যোগ</button>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function renderProducts() {
+    const list = getVisibleProducts();
+    $("#productGrid").innerHTML = list.map(productCard).join("");
+    $("#emptyState").hidden = list.length > 0;
+    $("#resultInfo").textContent = list.length ? `${bn(list.length)}টি পণ্য দেখানো হচ্ছে` : "";
+  }
+
+  /* ==========================================================
+     কুইক ভিউ
+     ========================================================== */
+  function openQuick(id) {
+    const p = getProduct(id);
+    if (!p) return;
+    $("#quickBody").innerHTML = `
+      <button class="icon-btn modal__close" data-close-modal aria-label="বন্ধ করুন">✕</button>
+      <div class="quick" data-id="${p.id}">
+        <div class="quick__img" style="background:${p.bg}">${p.emoji}</div>
+        <div>
+          <div class="card__cat">${catName(p.cat)} • ${esc(p.en)}</div>
+          <h3>${esc(p.name)}</h3>
+          <div class="rating">${stars(p.rating)} <small>${bn(p.rating)} (${bn(p.reviews)} রিভিউ)</small></div>
+          <p>${esc(p.desc)}</p>
+          <div class="price"><b>${money(p.price)}</b>${p.oldPrice ? `<s>${money(p.oldPrice)}</s>` : ""}<small>/কেজি</small></div>
+          <div class="quick__row">
+            <select class="weight-select" id="quickWeight" style="flex:none;min-width:170px">${weightOptions(p)}</select>
+            <div class="qty"><button data-qq="-1">−</button><span id="quickQty">১</span><button data-qq="1">+</button></div>
+            <button class="btn btn--primary" id="quickAdd" data-id="${p.id}">কার্টে যোগ করুন</button>
+          </div>
+        </div>
+      </div>`;
+    openModal("quickModal");
+  }
+
+  /* ==========================================================
+     কার্ট লজিক
+     ========================================================== */
+  function addToCart(id, weightIdx, qty = 1) {
+    const p = getProduct(id);
+    const w = WEIGHTS[p.weights][weightIdx];
+    const key = id + "|" + w.label;
+    const found = state.cart.find((i) => i.key === key);
+    if (found) found.qty += qty;
+    else state.cart.push({ key, id, weightLabel: w.label, factor: w.factor, qty });
+    saveCart();
+    renderCart();
+    bumpCart();
+    toast(`${p.name} (${w.label}) কার্টে যোগ হয়েছে`);
+  }
+
+  function changeQty(key, delta) {
+    const item = state.cart.find((i) => i.key === key);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) return removeItem(key);
+    if (item.qty > 20) { item.qty = 20; toast("একটি পণ্য সর্বোচ্চ ২০টি নেওয়া যাবে", "warn"); }
+    saveCart(); renderCart();
+  }
+
+  function removeItem(key) {
+    state.cart = state.cart.filter((i) => i.key !== key);
+    saveCart(); renderCart();
+  }
+
+  function clearCart() {
+    state.cart = []; state.coupon = null;
+    saveCart(); renderCart();
+  }
+
+  function bumpCart() {
+    const b = $("#cartBtn");
+    b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump");
+  }
+
+  function calcTotals() {
+    const subtotal = state.cart.reduce((s, i) => s + unitPrice(getProduct(i.id), i.factor) * i.qty, 0);
+    const discount = state.coupon ? Math.round(subtotal * state.coupon.percent / 100) : 0;
+    const after = subtotal - discount;
+    const shipping = subtotal === 0 ? 0 : (after >= CONFIG.freeShipOver ? 0 : CONFIG.shipFee);
+    return { subtotal, discount, shipping, total: after + shipping, after };
+  }
+
+  function renderCart() {
+    const count = state.cart.reduce((s, i) => s + i.qty, 0);
+    $("#cartCount").textContent = bn(count);
+
+    const box = $("#cartItems");
+    const foot = $("#cartFoot");
+
+    if (!state.cart.length) {
+      box.innerHTML = `<div class="cart-empty"><span>🛒</span><p>আপনার কার্ট খালি</p>
+        <a href="#products" class="btn btn--primary" data-close-cart>পণ্য দেখুন</a></div>`;
+      foot.hidden = true;
+      return;
+    }
+    foot.hidden = false;
+
+    box.innerHTML = state.cart.map((i) => {
+      const p = getProduct(i.id);
+      const line = unitPrice(p, i.factor) * i.qty;
+      return `<div class="cart-item" data-key="${esc(i.key)}">
+        <div class="cart-item__img" style="background:${p.bg}">${p.emoji}</div>
+        <div>
+          <h4>${esc(p.name)}</h4>
+          <small>${i.weightLabel} × ${money(unitPrice(p, i.factor))}</small>
+          <div class="qty"><button data-dec>−</button><span>${bn(i.qty)}</span><button data-inc>+</button></div>
+        </div>
+        <div class="cart-item__right"><b>${money(line)}</b>
+          <button class="remove-btn" data-remove>🗑 মুছুন</button></div>
+      </div>`;
+    }).join("");
+
+    const t = calcTotals();
+    $("#subTotal").textContent = money(t.subtotal);
+    $("#discountRow").hidden = !t.discount;
+    $("#discountAmt").textContent = "-" + money(t.discount);
+    $("#shipAmt").textContent = t.shipping ? money(t.shipping) : "ফ্রি";
+    $("#grandTotal").textContent = money(t.total);
+
+    const left = CONFIG.freeShipOver - t.after;
+    $("#freeShipText").textContent = left > 0
+      ? `আর ${money(left)} কিনলেই ফ্রি ডেলিভারি! 🚚`
+      : "🎉 অভিনন্দন! আপনার অর্ডারে ডেলিভারি ফ্রি";
+    $("#freeShipBar").style.width = Math.min(100, (t.after / CONFIG.freeShipOver) * 100) + "%";
+  }
+
+  function applyCoupon() {
+    const code = $("#couponInput").value.trim().toUpperCase();
+    if (!code) return toast("কুপন কোড লিখুন", "warn");
+    if (CONFIG.coupons[code]) {
+      state.coupon = { code, percent: CONFIG.coupons[code] };
+      toast(`কুপন প্রয়োগ হয়েছে: ${bn(state.coupon.percent)}% ছাড়`);
+    } else {
+      state.coupon = null;
+      toast("কুপন কোডটি সঠিক নয়", "warn");
+    }
+    renderCart();
+  }
+
+  /* ==========================================================
+     ড্রয়ার ও মডাল
+     ========================================================== */
+  function openCart() {
+    $("#cartDrawer").classList.add("open");
+    $("#cartDrawer").setAttribute("aria-hidden", "false");
+    $("#overlay").classList.add("show");
+    document.body.classList.add("no-scroll");
+  }
+  function closeCart() {
+    $("#cartDrawer").classList.remove("open");
+    $("#cartDrawer").setAttribute("aria-hidden", "true");
+    $("#overlay").classList.remove("show");
+    document.body.classList.remove("no-scroll");
+  }
+  function openModal(id) {
+    $("#" + id).classList.add("show");
+    $("#" + id).setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+  }
+  function closeModals() {
+    $$(".modal.show").forEach((m) => { m.classList.remove("show"); m.setAttribute("aria-hidden", "true"); });
+    document.body.classList.remove("no-scroll");
+  }
+
+  /* ==========================================================
+     চেকআউট
+     ========================================================== */
+  function openCheckout() {
+    if (!state.cart.length) return toast("কার্ট খালি!", "warn");
+    closeCart();
+    const t = calcTotals();
+    $("#orderSummary").innerHTML =
+      state.cart.map((i) => {
+        const p = getProduct(i.id);
+        return `<div><span>${esc(p.name)} (${i.weightLabel}) × ${bn(i.qty)}</span><span>${money(unitPrice(p, i.factor) * i.qty)}</span></div>`;
+      }).join("") +
+      (t.discount ? `<div><span>ছাড় (${state.coupon.code})</span><span>-${money(t.discount)}</span></div>` : "") +
+      `<div><span>ডেলিভারি</span><span>${t.shipping ? money(t.shipping) : "ফ্রি"}</span></div>
+       <div class="grand"><span>সর্বমোট</span><span>${money(t.total)}</span></div>`;
+    $("#checkoutView").hidden = false;
+    $("#successView").hidden = true;
+    $("#formError").hidden = true;
+    openModal("checkoutModal");
+  }
+
+  function placeOrder(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = Object.fromEntries(new FormData(form).entries());
+    $$("input, textarea", form).forEach((f) => f.classList.remove("invalid"));
+
+    const errors = [];
+    if (data.name.trim().length < 3) { errors.push("সঠিক নাম লিখুন"); form.name.classList.add("invalid"); }
+    if (!/^01[3-9]\d{8}$/.test(data.phone.trim())) { errors.push("সঠিক মোবাইল নম্বর দিন (১১ ডিজিট)"); form.phone.classList.add("invalid"); }
+    if (data.address.trim().length < 10) { errors.push("পূর্ণ ঠিকানা লিখুন"); form.address.classList.add("invalid"); }
+
+    const err = $("#formError");
+    if (errors.length) { err.textContent = errors.join(" • "); err.hidden = false; return; }
+    err.hidden = true;
+
+    /* ডেমো: এখানে সার্ভারে POST করার কথা (fetch('/Order/Create', ...)) */
+    const order = {
+      no: "RF" + Date.now().toString().slice(-7),
+      customer: data,
+      items: state.cart,
+      totals: calcTotals()
+    };
+    console.log("ORDER (demo):", order);
+
+    $("#orderNo").textContent = "RF" + bn(order.no.slice(2));
+    $("#checkoutView").hidden = true;
+    $("#successView").hidden = false;
+    form.reset();
+    clearCart();
+  }
+
+  /* ==========================================================
+     ইভেন্ট
+     ========================================================== */
+  function bindEvents() {
+    /* ক্যাটাগরি কার্ড */
+    $("#catGrid").addEventListener("click", (e) => {
+      const c = e.target.closest("[data-cat]");
+      if (!c) return;
+      state.category = c.dataset.cat; state.search = ""; $("#searchInput").value = "";
+      renderFilters(); renderProducts();
+      $("#products").scrollIntoView({ behavior: "smooth" });
+    });
+    $("#catGrid").addEventListener("keydown", (e) => { if (e.key === "Enter") e.target.click(); });
+
+    /* ফিল্টার */
+    $("#filters").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-cat]");
+      if (!b) return;
+      state.category = b.dataset.cat;
+      renderFilters(); renderProducts();
+    });
+
+    $("#sortSelect").addEventListener("change", (e) => { state.sort = e.target.value; renderProducts(); });
+
+    /* সার্চ (debounce) */
+    let t;
+    $("#searchInput").addEventListener("input", (e) => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        state.search = e.target.value; state.category = "all";
+        renderFilters(); renderProducts();
+        if (state.search) $("#products").scrollIntoView({ behavior: "smooth" });
+      }, 250);
+    });
+
+    /* প্রোডাক্ট গ্রিড */
+    $("#productGrid").addEventListener("click", (e) => {
+      const add = e.target.closest("[data-add]");
+      if (add) {
+        const card = add.closest(".card");
+        addToCart(+add.dataset.add, +$(".weight-select", card).value);
+        return;
+      }
+      const q = e.target.closest("[data-quick]");
+      if (q) openQuick(+q.dataset.quick);
+    });
+
+    /* কুইক ভিউ */
+    let qq = 1;
+    $("#quickBody").addEventListener("click", (e) => {
+      const d = e.target.closest("[data-qq]");
+      if (d) {
+        qq = Math.min(20, Math.max(1, qq + +d.dataset.qq));
+        $("#quickQty").textContent = bn(qq);
+        return;
+      }
+      if (e.target.id === "quickAdd") {
+        addToCart(+e.target.dataset.id, +$("#quickWeight").value, qq);
+        qq = 1; closeModals(); openCart();
+      }
+    });
+    $("#quickModal").addEventListener("transitionend", () => { if (!$("#quickModal").classList.contains("show")) qq = 1; });
+
+    /* কার্ট */
+    $("#cartBtn").addEventListener("click", openCart);
+    $("#closeCart").addEventListener("click", closeCart);
+    $("#overlay").addEventListener("click", closeCart);
+    $("#cartDrawer").addEventListener("click", (e) => {
+      if (e.target.closest("[data-close-cart]")) return closeCart();
+      const row = e.target.closest(".cart-item");
+      if (!row) return;
+      const key = row.dataset.key;
+      if (e.target.closest("[data-inc]")) changeQty(key, 1);
+      else if (e.target.closest("[data-dec]")) changeQty(key, -1);
+      else if (e.target.closest("[data-remove]")) removeItem(key);
+    });
+    $("#applyCoupon").addEventListener("click", applyCoupon);
+    $("#couponInput").addEventListener("keydown", (e) => { if (e.key === "Enter") applyCoupon(); });
+    $("#clearCart").addEventListener("click", () => { if (confirm("কার্ট খালি করবেন?")) clearCart(); });
+    $("#checkoutBtn").addEventListener("click", openCheckout);
+
+    /* চেকআউট ও মডাল */
+    $("#checkoutForm").addEventListener("submit", placeOrder);
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("[data-close-modal]")) closeModals();
+      if (e.target.classList && e.target.classList.contains("modal")) closeModals();
+    });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeModals(); closeCart(); } });
+
+    /* নিউজলেটার */
+    $("#newsletterForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      toast("ধন্যবাদ! কুপন কোড: DEMO10 🎁");
+      e.target.reset();
+    });
+
+    /* মোবাইল মেনু */
+    $("#menuBtn").addEventListener("click", () => $("#nav").classList.toggle("open"));
+    $("#nav").addEventListener("click", (e) => { if (e.target.tagName === "A") $("#nav").classList.remove("open"); });
+
+    /* স্ক্রল */
+    window.addEventListener("scroll", () => {
+      $("#header").classList.toggle("scrolled", window.scrollY > 10);
+      $("#toTop").classList.toggle("show", window.scrollY > 500);
+    }, { passive: true });
+    $("#toTop").addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  }
+
+  /* ---------- রিভিউ (ডেমো) ---------- */
+  function renderReviews() {
+    const data = [
+      { n: "রাফিয়া সুলতানা", c: "ঢাকা", t: "গাওয়া ঘী-এর ঘ্রাণ একদম আসল! বাচ্চারাও পরোটা খেয়ে মুগ্ধ। নিয়মিত অর্ডার করব।" },
+      { n: "তানভীর আহমেদ", c: "চট্টগ্রাম", t: "সুন্দরবনের মধু খাঁটি কি না আগে সন্দেহ ছিল, কিন্তু স্বাদ ও ঘনত্বে বুঝেছি এটা আসল। প্যাকেজিংও দারুণ।" },
+      { n: "নুসরাত জাহান", c: "সিলেট", t: "বাদাম ও কিসমিস একদম সতেজ ছিল। দুই দিনেই ডেলিভারি পেয়েছি। ধন্যবাদ!" }
+    ];
+    $("#reviewGrid").innerHTML = data.map((r) => `
+      <article class="review">
+        <div class="rating">★★★★★</div>
+        <p>“${r.t}”</p>
+        <div class="review__who"><div class="avatar">${r.n[0]}</div><div><b>${r.n}</b><small>${r.c}</small></div></div>
+      </article>`).join("");
+  }
+
+  /* ---------- শুরু ---------- */
+  function init() {
+    renderCategories();
+    renderFilters();
+    renderProducts();
+    renderReviews();
+    renderCart();
+    bindEvents();
+  }
+  document.addEventListener("DOMContentLoaded", init);
+})();
+
+  </script>
+</body>
+</html>
